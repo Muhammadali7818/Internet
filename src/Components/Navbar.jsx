@@ -48,7 +48,8 @@ function Navbar() {
           </Link>
           </ul>
         </div>
-        <Link to={"/"}>
+        <Link className=' flex' to={"/"}>
+          <img src="/public/image.png" className=' w-[45px] h-[45px] relative bottom-1 left-4'   alt="" />
           <p className="btn btn-ghost text-xl">Internet</p>
 
         </Link>
