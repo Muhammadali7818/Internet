@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom' // <-- MUHIM
 // import {FaUnsplash} from 'react-icons/fa6'  
 // import {FaMoon, FaSun} from 'react-icons/fa'  
 
+import img from '/public/image.png'
 
 
 const themeStorage = () => {
@@ -49,7 +50,7 @@ function Navbar() {
           </ul>
         </div>
         <Link className=' flex' to={"/"}>
-          <img src="/public/image.png" className=' w-[45px] h-[45px] relative bottom-1 left-4'   alt="" />
+          <img src={img} className=' w-[45px] h-[45px] relative bottom-1 left-4'   alt="" />
           <p className="btn btn-ghost text-xl">Internet</p>
 
         </Link>
