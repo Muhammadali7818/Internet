@@ -1,0 +1,11 @@
+.card{
+    border: 5px solid black;
+}
+.Contact{
+    width: 1200px;
+    position: relative;
+        top: 70px;
+        left: 150px;
+        display: flex;
+        gap: 50px;
+    }
