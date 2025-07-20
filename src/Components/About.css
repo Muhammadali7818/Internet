@@ -118,3 +118,6 @@ body {
   background-image: url('/public/image18.png');
  
 }
+@media (max-width: 300px) {
+  
+}

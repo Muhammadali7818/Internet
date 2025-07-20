@@ -1,18 +1,29 @@
 import React from 'react'
-import './Login.css'
 import { Link } from 'react-router-dom'
 
-function Login() {
+
+function Register() {
   return (
 <div className=' w-full h-full flex items-center justify-center'>
   <div className=' w-[50%] h-full '>
     <img src="https://picsum.photos/200/300" className=' w-full h-[100vh]' alt="" />
   </div>
   <div className=' w-[50%] h-full   flex items-center justify-center '>
-    <div className=' w-[400px] h-[400px] border border-slate-950 flex flex-col items-center justify-center gap-[20px]'>
-      <h1 className=' font-mono font-extrabold text-3xl'> Login</h1>
+    <div className=' w-[400px] h-[400px]  flex flex-col items-center justify-center gap-[20px]'>
+      <h1 className=' font-mono font-extrabold text-3xl'> Register</h1>
       <div className=' w-full  flex flex-col items-center justify-center gap-[20px]'>
-        <label className="w-[85%] input input-bordered flex items-center gap-2">
+<label className="input w-[85%]  input-bordered flex items-center gap-2">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    className="h-4 w-4 opacity-70">
+    <path
+      d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+  </svg>
+  <input type="text" className="grow" placeholder="Username" />
+</label>
+<label className="input w-[85%]  input-bordered flex items-center gap-2">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 16 16"
@@ -25,7 +36,8 @@ function Login() {
   </svg>
   <input type="text" className="grow" placeholder="Email" />
 </label>
-<label className=" w-[85%] input input-bordered flex items-center gap-2">
+
+<label className="input w-[85%]  input-bordered flex items-center gap-2">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 16 16"
@@ -36,17 +48,31 @@ function Login() {
       d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
       clipRule="evenodd" />
   </svg>
-  <input type="password" className="grow" value="password" />
+  <input type="password" className="grow" placeholder='Your password'  />
+</label>
+<label className=" w-[85%] input input-bordered flex items-center gap-2">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    className="h-4 w-4 opacity-70">
+    <path
+      fillRule="evenodd"
+      d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+      clipRule="evenodd"
+       />
+  </svg>
+  <input type="password" className="grow" placeholder='Confirm password' />
 </label>
       </div>
       <div className='w-full'>
       <div className='w-full  flex items-center justify-center  gap-[20px]'>
       <button className="btn btn-info w-[125px] rounded-3xl">Login</button>
       <button className="btn btn-secondary w-[145px] rounded-3xl">Google</button>
+      
       </div>
       <div className=' flex gap-7 relative top-4 items-center justify-center'>
-      <Link to={'/forgot_pasword'} className=' text-blue-600 hover:underline'>Forgot password?</Link>
-      <Link to={'/register'} className=' text-blue-600 hover:underline'>You doun't have an account?</Link>
+      <Link to={'/register'} className=' text-blue-600 hover:underline'>Already have an account?</Link>
       </div>
       </div>
       
@@ -56,4 +82,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register

@@ -8,23 +8,26 @@ import About from './Components/About';
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 import toast, { Toaster } from 'react-hot-toast';
+import Register from './pages/Register';
 
 
 function App() {
   return (
     <BrowserRouter>
-    
+
       <Navbar />
-      <Toaster/>
+      <Toaster />
       <Routes>
         <Route path="/" element={<>
-          <Home/>
+          <Home />
         </>} />
 
-        <Route path="/login" element={<Login />} />
+
         <Route path='/home' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register/>} />
       </Routes>
       <Footer />
 
