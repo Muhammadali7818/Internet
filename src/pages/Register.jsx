@@ -72,7 +72,7 @@ function Register() {
       
       </div>
       <div className=' flex gap-7 relative top-4 items-center justify-center'>
-      <Link to={'/register'} className=' text-blue-600 hover:underline'>Already have an account?</Link>
+      <Link to={'/login'} className=' text-blue-600 hover:underline'>Already have an account?</Link>
       </div>
       </div>
       
