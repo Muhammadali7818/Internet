@@ -1,0 +1,9 @@
+@media (max-width: 1000px) {
+ 
+  .Register{
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://picsum.photos/200/300);
+    background-size: cover;
+  }
+}

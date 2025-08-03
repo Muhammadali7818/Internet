@@ -118,6 +118,102 @@ body {
   background-image: url('/public/image18.png');
  
 }
-@media (max-width: 300px) {
-  
+@media (max-width: 1000px) {
+  .img9{
+    width: auto;
+  }
+}
+@media (max-width: 550px) {
+  .img9{
+    width: auto;
+  }
+  .div{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .git{
+    z-index: 100;
+    height: 1100px;
+    display: flex;
+    flex-direction: column;
+  }
+  .git1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .git2{
+    position: relative;
+    left: 100px;
+    
+  }
+  .git3{
+    width: 100%;
+    
+    position: relative;
+    left: 100px;
+  }
+  .git4{
+
+    position: relative;
+    left: 100px;
+  }
+  .git5{
+    position: relative;
+    bottom: 170px;
+    width: 100%;
+  }
+  .pit{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pit1{
+    height: 5000px;
+    display: flex;
+    gap: 1rem;
+  }
+  .pit2{
+    width: 100%;
+    height: 840px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .pit3{
+    position: relative;
+
+    height: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .pit4{
+    width: 200px;
+  }
+  .ota{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .main{
+    width: 100%;
+    height: 4000px;
+  }
+  .main1{
+    width: 100%;
+    height: 400px;
+  }
+  .main2{
+  }
+  .main3{
+  }
+  .main4{
+  }
+  .main5{
+  }
 }

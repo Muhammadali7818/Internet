@@ -1,3 +1,4 @@
+
 .form-container {
   width: 350px;
   height: 500px;
@@ -130,4 +131,15 @@
     .google-icon {
   font-size: 18px;
   margin-bottom: 1px;
+}
+@media (max-width: 1000px) {
+  .lll{
+    display: none;
+  }
+  .login{
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://picsum.photos/200/300);
+    background-size: cover;
+  }
 }
