@@ -26,6 +26,7 @@ function Register() {
         password
       );
       const user = userCredential.user;
+      
       await setDoc(doc(db, 'users', user.uid),{
 
   uid: user.uid,
@@ -39,6 +40,7 @@ function Register() {
     } catch (error) {
       toast.error(error.message)
     }
+    
   };
 
   return (

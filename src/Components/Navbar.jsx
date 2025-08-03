@@ -18,12 +18,12 @@ const themeStorage = () => {
   return localStorage.getItem("theme") || "dark";
 };
 
-function Navbar(user) {
+function Navbar({user}) {
   console.log(user);
   
   const [lang, setlang] = useState("uz");
   const [t, i18n] = useTranslation();
-
+  
   const handleChange = (e) => {
     console.log(e.target.value);
     setlang(e.target.value);

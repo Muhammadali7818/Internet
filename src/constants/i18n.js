@@ -4,7 +4,7 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      "Home ": "Home",
+      "Home": "Home",
       "about" : "About",
       "contact": "Contact",
       "Internet":"Online",
