@@ -247,8 +247,7 @@
   opacity: 1;
 } */
 .navbar {
-  
-  position: fixed;      /* Qatirib qo‘yadi */
+       /* Qatirib qo‘yadi */
   top: 0;               /* Sahifaning yuqori qismida */
   left: 0;
   width: 100%;          /*  /* Orqa fon */

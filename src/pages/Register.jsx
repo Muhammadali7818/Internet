@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Register.css";
 import toast from "react-hot-toast";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../firebase/config";
-import { setDoc, doc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, db, googleProvider } from "../firebase/config";
+import { setDoc, doc, getDoc } from "firebase/firestore";
+import { FaGoogle } from "react-icons/fa";
 
 
-function Register() {
+function Register({setUser}) {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate( )
+
   const handleRegister = async () => {
     if (password !== confirmpassword) {
       setError("Parolni mos emas");
@@ -42,6 +45,34 @@ function Register() {
     }
     
   };
+
+
+  const handleGoolgeLogin = async () =>{
+      try {
+        const result = await  signInWithPopup(auth, googleProvider)
+        const user  = result.user
+        
+        const userRef = doc(db, 'users', user.uid)
+        const userSnap = await getDoc(userRef)
+        if(!userSnap.exists()){
+          await setDoc(userRef,{
+            email:user.email,
+            username:user.displayName,
+            createdAt: new Date(),
+          })
+        }
+        setUser({
+          uid:user.uid,
+          email:user.email,
+          username: user.displayName,
+        })
+        toast.success('Google orqali tizimga kirildi')
+        navigate('/')
+      } catch (error) {
+        toast.error(error.message)
+      }
+
+    }
 
   return (
     <div className="Register w-full h-full flex items-center justify-center">
@@ -139,8 +170,8 @@ function Register() {
               >
                 Register
               </button>
-              <button className="btn btn-secondary w-[145px] rounded-3xl">
-                Google
+              <button className="btn btn-secondary w-[145px] rounded-3xl" onClick={handleGoolgeLogin}>
+                <FaGoogle/> Google
               </button>
             </div>
             <div className=" flex gap-7 relative top-4 items-center justify-center">

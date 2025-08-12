@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/Navbar.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import "./About";
 import "./Footer";
@@ -10,20 +10,24 @@ import "./Footer";
 
 import { FcLike } from "react-icons/fc";
 import img from "/public/image21.png";
-import BMW from "/public/BMW.png";
+import avatar from "/public/user.png";
 import { useTranslation } from "react-i18next";
 import navLinks from "../constants";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/config";
+import toast from "react-hot-toast";
 
 const themeStorage = () => {
   return localStorage.getItem("theme") || "dark";
 };
 
-function Navbar({user}) {
+function Navbar({ user, setUser }) {
+  const navigate = useNavigate();
   console.log(user);
-  
+
   const [lang, setlang] = useState("uz");
   const [t, i18n] = useTranslation();
-  
+
   const handleChange = (e) => {
     console.log(e.target.value);
     setlang(e.target.value);
@@ -43,8 +47,18 @@ function Navbar({user}) {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
+  const handleOut = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+      toast.success("Yaxshi boring");
+      navigate("/login");
+    } catch (error) {
+      toast.error(error.massage);
+    }
+  };
   return (
-    <div className="navbar bg-base-300 w-full ">
+    <div className="navbar bg-base-300 w-full  ">
       <div className="navbar-start w-full">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -141,7 +155,7 @@ function Navbar({user}) {
           </Link>
         </div>
         <div className=" flex items-center justify-center gap-4">
-          <h1>Muhammadali</h1>
+          <h1>{user?.displayName ? user?.displayName : "Anoymis"}</h1>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -149,7 +163,10 @@ function Navbar({user}) {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img alt="Tailwind CSS Navbar component" src={BMW} />
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src={user?.photoURL ? user?.photoURL : avatar}
+                />
               </div>
             </div>
             <ul
@@ -157,16 +174,13 @@ function Navbar({user}) {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <Link to={"/profile"}>Profile</Link>
               </li>
               <li>
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a onClick={handleOut}>Logout</a>
               </li>
             </ul>
           </div>
