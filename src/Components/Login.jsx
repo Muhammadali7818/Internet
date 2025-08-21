@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, db, googleProvider } from "../firebase/config";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
-function Login({ setUser }) {
+function Login({ setUser,user }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  
+    
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Hush kelibsiz");
-      nanigate("/");
+      navigate("/");
     } catch (error) {
       toast.error(error.message);
     }
@@ -46,7 +46,17 @@ function Login({ setUser }) {
       toast.error(error.message)
     }
   }
-
+  const handleforgotPassword = async () =>{
+    sendPasswordResetEmail(auth, email)
+    .then(() =>{
+      toast.success('Parol tiklash linki emailga yuborildi.')
+    })
+    .catch(error => {
+      const errorCode = error.code
+      const errorMessage = error.message
+      toast.error(errorCode, errorMessage)
+    })
+  }
   return (
     <div className="login w-full h-full flex items-center justify-center">
       <div className="hidden lg:flex w-[50%] h-full ">
@@ -100,23 +110,49 @@ function Login({ setUser }) {
           </div>
           <div className="w-full">
             <div className="w-full  flex items-center justify-center  gap-[20px]">
-              <button
+             
+                <button
                 onClick={handleLogin}
                 className="btn btn-info w-[125px] rounded-3xl"
               >
                 Login
               </button>
+             
               <button className="btn btn-secondary w-[145px] rounded-3xl" onClick={handleGoolgeLogin}>
                 Google
               </button>
             </div>
             <div className=" flex gap-7 relative top-4 items-center justify-center">
-              <Link
-                to={"/forgot_pasword"}
+              <p
                 className=" text-blue-600 hover:underline"
+                onClick={() => document.getElementById("my_modal_3").showModal()}
               >
                 Forgot password?
-              </Link>
+              </p>
+                          <dialog id="my_modal_3" className="modal">
+              <div className="modal-box">
+                <form method="dialog">
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+                <h3 className="font-bold text-lg">Send reset password link.</h3>
+                <div className=" flex items-center justify-center gap-4">
+                  <input
+                    type="text"
+                    className="w-96 h-12 outline-none pl-2 rounded-lg"
+                    placeholder="Email address"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <button
+                    className="w-[100px] h-[48px] bg-green-800 rounded-xl text-white "
+                    onClick={handleforgotPassword}
+                  >
+                    Send
+                  </button>
+                </div>
+              </div>
+            </dialog>
               <Link to={"/register"} className=" text-blue-600 hover:underline">
                 You doun't have an account?
               </Link>

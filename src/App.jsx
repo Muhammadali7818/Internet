@@ -12,7 +12,6 @@ import Register from './pages/Register';
 import './firebase/config'
 import LikedImages from './Components/LikedImages';
 import ProtectedRoute from './Components/ProtectedRoute';
-import ForgotPassword from './pages/Forgot_password';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
 import Profile from './pages/Profile';
@@ -43,9 +42,8 @@ function App() {
         } />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path="/login" element={user ? <Navigate to={'/'} /> : <Login setUser={setUser}/>} />
+        <Route path="/login" element={user ? <Navigate to={'/'} /> : <Login setUser={setUser}  user={user}/>} />
         <Route path="/register" element={user ? <Navigate to={'/'} /> : <Register  setUser={setUser}/>} />
-        <Route path="/forgotPassword" element={<ForgotPassword/>} />
         <Route path='/likedImages' element={<LikedImages />} />
         <Route path='/profile' element={<Profile user={user} setUser={setUser} />} />
       </Routes>
